@@ -4,4 +4,5 @@
 Atualizações feitas, novos cadastros executados no sistema de Leilões.
 
 ## Técnologias utilizadas
-Foi utilizada a seguinte tec
+Foi utilizada a seguinte tecnologia nesse repositório:
+- Java
