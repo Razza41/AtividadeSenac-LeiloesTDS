@@ -17,6 +17,8 @@ import java.util.ArrayList;
 
 
 public class ProdutosDAO {
+
+   
     
     Connection conn;
     PreparedStatement prep;
@@ -38,7 +40,6 @@ public class ProdutosDAO {
         
         prep.execute();
         
-        
         JOptionPane.showMessageDialog(null, "Cadastro feito com sucesso!");
         
         } catch (Exception e) {
@@ -51,6 +52,27 @@ public class ProdutosDAO {
     }
     
     public ArrayList<ProdutosDTO> listarProdutos(){
+        try {
+                conectaDAO bd = new conectaDAO();
+                bd.connectDB();
+                
+                String sql = "SELECT * FROM produtos";
+                prep = bd.getConexao().prepareStatement(sql);
+                ResultSet resposta = prep.executeQuery();
+                
+                ArrayList<ProdutosDTO> produtos = new ArrayList<ProdutosDTO>();
+                
+                while(resposta.next()){
+                    ProdutosDTO produto = new ProdutosDTO();
+                    produto.setId(resposta.getInt("id"));
+                    produto.setNome(resposta.getString("Nome"));
+                    produto.setValor(resposta.getInt("Valor"));
+                    produto.setStatus(resposta.getString("Status"));
+                    listagem.add(produto);
+                }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao mostrar lista do banco de dados.");
+        }
         
         return listagem;
     }

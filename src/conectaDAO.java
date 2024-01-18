@@ -29,16 +29,6 @@ public class conectaDAO {
         }
         return conn;
     }
-    public void desconectar(){
-        try {
-            if (conn != null && !conn.isClosed()){
-                conn.close();
-                System.out.println("Desconectado com sucesso!");
-            }
-        } catch (Exception e) {
-            System.out.println("Erro ao desconectar.");
-        }
-    }
      public Connection getConexao(){
         return conn;
     }
